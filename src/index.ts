@@ -1,6 +1,7 @@
 import express from "express";
 import "reflect-metadata";
 import http from "http";
+import path from "path";
 import { Server } from "socket.io";
 import { AppDataSource } from "./DAL/config/data-source";
 import { appConfig } from "./consts";
@@ -16,8 +17,14 @@ AppDataSource.initialize()
     app.use(express.json());
     app.use(v1Routes);
 
+    // app.get("/", (req, res) => {
+    //   res.send("<h1>Hello world !!!</h1>");
+    // });
+
+    app.use(express.static(path.resolve(__dirname, "../src/public")));
+
     app.get("/", (req, res) => {
-      res.send("<h1>Hello world !!!</h1>");
+      res.sendFile(path.resolve(__dirname, "../src/public", "index.html"));
     });
 
     // create http server
@@ -50,7 +57,7 @@ AppDataSource.initialize()
       });
     });
 
-    app.listen(port, () => {
+    server.listen(port, () => {
       console.log(`Server is running on port ${port}`);
     });
   })
