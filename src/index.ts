@@ -14,7 +14,7 @@ AppDataSource.initialize()
     const port = appConfig.PORT;
 
     app.use(express.json());
-    app.use("/api/v1", v1Routes);
+    app.use(v1Routes);
 
     app.get("/", (req, res) => {
       res.send("<h1>Hello world !!!</h1>");
