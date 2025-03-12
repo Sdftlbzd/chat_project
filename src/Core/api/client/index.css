@@ -1,0 +1,19 @@
+#container {
+  display: none;
+  width: 500px;
+  margin: 0 auto;
+  border: 1px solid #000;
+}
+
+#container .messages {
+  height: 400px;
+}
+
+#container .inputs {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+#typing {
+  font-size: 12px;
+}
